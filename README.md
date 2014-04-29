@@ -1,6 +1,8 @@
 ## Setting up
 
 ```
+cp .env.sample .env
+nano .env 
 bundle install
 ```
 
