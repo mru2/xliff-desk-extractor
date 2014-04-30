@@ -25,12 +25,12 @@ class Xliff
 
       @translations.each do |article|
 
-        xliff.file :'source-language' => 'fr_FR', :datatype => 'plaintext', :original => "Article#{}" do |file|
+        xliff.file :'source-language' => 'fr-FR', :datatype => 'plaintext', :original => article[:id] do |file|
           file.body do |body|
 
             article[:texts].each do |key, value|
               body.tag! 'trans-unit', :id => key do |trans_unit|
-                trans_unit.source value
+                trans_unit.source value, :'xml-lang' => 'fr-FR'
               end
             end
 

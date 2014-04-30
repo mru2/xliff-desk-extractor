@@ -8,7 +8,7 @@ source_translations = articles.map do |article|
     :id => "Article##{article.id}",
     :texts => {
       :subject  => article.subject,
-      :body     => article.body_email, # Virtually the same as phone, facebook, qna, ...
+      :body     => CGI.unescapeHTML(article.body_email), # Virtually the same as phone, facebook, qna, ...
       :keywords => article.keywords,
     }
   }
@@ -19,4 +19,6 @@ xliff = Xliff.new(source_translations)
 xml = xliff.xml
 
 # Write them to the output file
-File.open('./translations.xliff', 'w') { |file| file.write(xml.target!) } # target*!* to not append </target> at the end of the file
+File.open('./translations.xlf', 'w') { |file| file.write(xml.target!) } # target*!* to not append </target> at the end of the file
+
+puts "Saved translations file in #{Dir.pwd}/translations.xlf"
