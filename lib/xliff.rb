@@ -44,4 +44,51 @@ class Xliff
     xml
   end
 
+
+  # Returns a nested hash
+  # {
+  #   <article_id> => {
+  #     (subject|body|text) => translated_value
+  #   }
+  # }
+
+  def self.parse(raw)
+    doc = Nokogiri::XML raw
+
+    articles = {}
+
+    doc.xpath('//xmlns:file').each do |article|
+
+      begin
+        article_id = article['original'].match(/Article#(\d+)/)[1].to_i
+      rescue => e
+        puts "Error fetching article id for #{article}"
+        next
+      end
+
+      article_translations = {}
+
+      article.xpath('.//xmlns:target').each do |translation|
+
+        begin
+          key = translation.parent['id']
+          value = translation.text
+          next if value == ''
+        rescue => e
+          puts "Error fetching translation infos for #{translation}"
+          next
+        end
+
+        article_translations[key] = value
+
+      end
+
+      articles[article_id] = article_translations
+
+    end
+
+    articles
+
+  end
+
 end

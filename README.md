@@ -7,10 +7,16 @@ bundle install
 ```
 
 
-## Run the script
+# Export the french translations
 
 ```
-ruby ./run.rb
+ruby ./export.rb
+```
+
+# Import translations
+
+```
+ruby ./import.rb <locale> <path_to_translations_file.xlf>
 ```
 
 
