@@ -7,16 +7,18 @@ bundle install
 ```
 
 
-# Export the french translations
+## Usage
+
+### Import all the existing desk translations in .yml files, for uploading to localeapp
 
 ```
-ruby ./export.rb
+rake export_to_yaml
 ```
 
-# Import translations
+### Update the desk articles and topics with the latest translations from localeapp
 
 ```
-ruby ./import.rb <locale> <path_to_translations_file.xlf>
+rake sync_translations
 ```
 
 
