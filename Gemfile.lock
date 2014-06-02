@@ -1,15 +1,32 @@
+GIT
+  remote: https://github.com/mru2/clicrdv-translations.git
+  revision: 6fe8eb9bba5ac8ebb6487a8f2ac918f6efab2547
+  specs:
+    clicrdv_translations (0.0.1)
+      localeapp (~> 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
     builder (3.2.2)
     coderay (1.1.0)
     dotenv (0.9.0)
+    gli (2.10.0)
     hashie (2.1.1)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    i18n (0.6.9)
     json (1.8.1)
+    localeapp (0.7.2)
+      gli
+      i18n
+      json
+      rack
+      rest-client
+      ya2yaml
     method_source (0.8.2)
+    mime-types (2.3)
     mini_portile (0.6.0)
     multi_xml (0.5.5)
     nokogiri (1.6.2.1)
@@ -18,13 +35,18 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    rack (1.5.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     slop (3.5.0)
+    ya2yaml (0.31)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   builder
+  clicrdv_translations!
   dotenv
   hashie
   httparty

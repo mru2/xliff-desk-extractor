@@ -24,3 +24,11 @@ task :export_to_yaml do
   end
 
 end 
+
+
+desc 'Synchronize desk translations with their localeapp source'
+task :sync_translations do
+
+  Syncer.sync!
+
+end

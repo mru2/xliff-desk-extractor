@@ -77,6 +77,21 @@ class Desk
     end
 
 
+    # Update the translations for a topic
+    def update_topic_translations(topic_id, locale, translations)
+      puts "Updating #{locale} translations for topic ##{topic_id}"
+
+      # Tries a PATCH to update an existing translation
+      res = patch "/topics/#{topic_id}/translations/#{locale}", translations
+      return true if res != false
+
+
+      # If not working, tries a POST to create it
+      res = post "/topics/#{topic_id}/translations", translations.merge(:locale => locale)
+      return !!res
+    end
+
+
     # Get an article's id from its url
     def format_article(article)
       id = article['_links']['self']['href'].match(/\/api\/v2\/articles\/(\d+)/)[1].to_i
