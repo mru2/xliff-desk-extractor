@@ -12,5 +12,6 @@ require 'dotenv'
 Dotenv.load
 
 # Libs
-require 'lib/desk_articles'
+require 'lib/desk'
 require 'lib/xliff'
+require 'lib/importer'
